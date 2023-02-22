@@ -1,7 +1,6 @@
 #pragma once
 
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -23,6 +22,9 @@ struct Content {
 	int p2;
 };
 
-
+int Sum(int a, int b);
+int Dif(int a, int b);
+int Mul(int a, int b);
+int Div(int a, int b);
 
 
