@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Downloads\a3e1611ad69cf5ff18e8d6a1bc5bae2b-74f671808709df37aa35967b5123c48792ed8705\main.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\a3e1611ad69cf5ff18e8d6a1bc5bae2b-74f671808709df37aa35967b5123c48792ed8705\MyLibrary.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyLibrary.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Downloads\a3e1611ad69cf5ff18e8d6a1bc5bae2b-74f671808709df37aa35967b5123c48792ed8705\MyLibrary.h" />
+    <ClInclude Include="MyLibrary.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

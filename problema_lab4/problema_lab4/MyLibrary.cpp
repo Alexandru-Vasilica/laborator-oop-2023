@@ -48,17 +48,14 @@ MyLibrary::MyLibrary(std::ostream& output_stream, unsigned books_count, ...) : o
     
 }
 
-MyLibrary::MyLibrary(std::initializer_list<int> v): output_stream(std::cout)
+MyLibrary::MyLibrary(std::initializer_list<int> v): output_stream(std::cout), books_count(0)
 {
     books = new int[100];
-    int p = 0;
+    
     for (const int* i = v.begin(); i != v.end(); i++)
     {
-         if (p == 0)
-            books_count = *i;
-        else
-            books[p - 1] = *i;
-        p++;
+            books[books_count] = *i;
+            books_count++;
     }
 }
 
