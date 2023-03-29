@@ -6,7 +6,7 @@ JsonValue::~JsonValue(){
 NumberValue::NumberValue(int x): value(x) {
 }
 
-void NumberValue::print(std::ostream& out) {
+void NumberValue::print(std::ostream& out) const {
     out << value;
 }
 
@@ -15,7 +15,7 @@ StringValue::StringValue(const char* value) {
     strcpy(string, value);
 }
 
-void StringValue::print(std::ostream& out) {
+void StringValue::print(std::ostream& out) const {
     out << "\"" << string << "\"";
 }
 
@@ -27,7 +27,7 @@ BoolValue::BoolValue(bool x) {
     value = x;
 }
 
-void BoolValue::print(std::ostream& out) {
+void BoolValue::print(std::ostream& out) const {
     if (value)
         out << "true";
     else
@@ -39,7 +39,7 @@ NullValue::NullValue() {
     value = strcpy(value,"null");
 }
 
-void NullValue::print(std::ostream& out) {
+void NullValue::print(std::ostream& out) const {
     out << value;
 }
 
@@ -75,7 +75,7 @@ ArrayValue::ArrayValue() : count(0) {
 
 }
 
-void ArrayValue::print(std::ostream& out) {
+void ArrayValue::print(std::ostream& out) const {
     out << "[";
     for (int i = 0; i < count; i++) {
         arr[i]->print(out);
@@ -92,7 +92,7 @@ ArrayValue::~ArrayValue() {
     count = 0;
 }
 
-void ObjectValue::print(std::ostream& out) {
+void ObjectValue::print(std::ostream& out) const {
     out << "{";
     for (int i=0; i<count;i++) {
         out << "\""<<fieldnames[i] << "\": ";
