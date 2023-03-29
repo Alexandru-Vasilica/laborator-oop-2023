@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "JsonValue.h"
 #include <cstring>
+JsonValue::~JsonValue(){
+}
 NumberValue::NumberValue(int x): value(x) {
 }
 
