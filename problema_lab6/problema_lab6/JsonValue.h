@@ -3,7 +3,7 @@
 class JsonValue {
   public:
     virtual ~JsonValue() = 0;
-    virtual void print(std::ostream& out) const = 0;
+    virtual void print(std::ostream& out,int ind) const = 0;
 };
 
 class NumberValue : public JsonValue {
@@ -12,7 +12,7 @@ class NumberValue : public JsonValue {
 
   public:
     NumberValue(int x);
-    virtual void print(std::ostream& out) const override;
+    virtual void print(std::ostream& out, int ind) const override;
 };
 
 class StringValue : public JsonValue {
@@ -21,7 +21,7 @@ class StringValue : public JsonValue {
 
   public:
     StringValue(const char* value);
-    virtual void print(std::ostream& out) const override;
+    virtual void print(std::ostream& out, int ind) const override;
     ~StringValue();
 };
 
@@ -31,7 +31,7 @@ class BoolValue : public JsonValue {
 
   public:
     BoolValue(bool x);
-    virtual void print(std::ostream& out) const override;
+    virtual void print(std::ostream& out, int ind) const override;
 };
 
 class NullValue : public JsonValue {
@@ -40,7 +40,7 @@ class NullValue : public JsonValue {
 
   public:
     NullValue();
-    virtual void print(std::ostream& out) const override;
+    virtual void print(std::ostream& out, int ind) const override;
     ~NullValue();
 };
 
@@ -52,7 +52,7 @@ class ArrayValue : public JsonValue {
   public:
     ArrayValue();
     void add(JsonValue* value);
-    void print(std::ostream& out) const override;
+    void print(std::ostream& out, int ind) const override;
     ~ArrayValue();
 };
 
@@ -66,6 +66,6 @@ class ObjectValue : public JsonValue {
     ObjectValue();
     void add(const char* name, JsonValue* value);
     operator unsigned();
-    void print(std::ostream& out) const override;
+    void print(std::ostream& out,int ind=0) const override;
     ~ObjectValue();
 };

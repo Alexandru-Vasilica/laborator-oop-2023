@@ -6,7 +6,7 @@ JsonValue::~JsonValue(){
 NumberValue::NumberValue(int x): value(x) {
 }
 
-void NumberValue::print(std::ostream& out) const {
+void NumberValue::print(std::ostream& out, int ind) const {
     out << value;
 }
 
@@ -15,7 +15,7 @@ StringValue::StringValue(const char* value) {
     strcpy(string, value);
 }
 
-void StringValue::print(std::ostream& out) const {
+void StringValue::print(std::ostream& out, int ind) const {
     out << "\"" << string << "\"";
 }
 
@@ -27,7 +27,7 @@ BoolValue::BoolValue(bool x) {
     value = x;
 }
 
-void BoolValue::print(std::ostream& out) const {
+void BoolValue::print(std::ostream& out, int ind) const {
     if (value)
         out << "true";
     else
@@ -39,7 +39,7 @@ NullValue::NullValue() {
     value = strcpy(value,"null");
 }
 
-void NullValue::print(std::ostream& out) const {
+void NullValue::print(std::ostream& out, int ind) const {
     out << value;
 }
 
@@ -75,10 +75,10 @@ ArrayValue::ArrayValue() : count(0) {
 
 }
 
-void ArrayValue::print(std::ostream& out) const {
+void ArrayValue::print(std::ostream& out,int ind) const {
     out << "[";
     for (int i = 0; i < count; i++) {
-        arr[i]->print(out);
+        arr[i]->print(out,ind);
         if (i!=count-1)
         out << ", ";
     }
@@ -92,15 +92,21 @@ ArrayValue::~ArrayValue() {
     count = 0;
 }
 
-void ObjectValue::print(std::ostream& out) const {
-    out << "{";
+void ObjectValue::print(std::ostream& out,int ind) const {
+    ind++;
+    out << "{ \n";
     for (int i=0; i<count;i++) {
+        for (int i = 0; i < 4 * ind; i++)
+        out << " ";
         out << "\""<<fieldnames[i] << "\": ";
-        values[i]->print(out);
+        values[i]->print(out,ind);
         if (i != count - 1)
-        out << ", ";
+        out << ",";
+        out << "\n";
     }
-    out << "}";
+    for (int i = 0; i < 4 * (ind-1); i++)
+        out << " ";
+    out << "} \n";
 }
 
 ObjectValue::~ObjectValue() {
