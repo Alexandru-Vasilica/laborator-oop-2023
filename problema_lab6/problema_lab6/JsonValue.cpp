@@ -19,6 +19,10 @@ void StringValue::print(std::ostream& out) {
     out << "\"" << string << "\"";
 }
 
+StringValue::~StringValue() {
+    delete[] string;
+}
+
 BoolValue::BoolValue(bool x) {
     value = x;
 }
@@ -37,6 +41,10 @@ NullValue::NullValue() {
 
 void NullValue::print(std::ostream& out) {
     out << value;
+}
+
+NullValue::~NullValue() {
+    delete[] value;
 }
 
 ObjectValue::ObjectValue(): count(0){
@@ -77,6 +85,13 @@ void ArrayValue::print(std::ostream& out) {
     out << "]";
 }
 
+ArrayValue::~ArrayValue() {
+    for (int i = 0; i < count; i++)
+        delete[] arr[i];
+    delete[] arr;
+    count = 0;
+}
+
 void ObjectValue::print(std::ostream& out) {
     out << "{";
     for (int i=0; i<count;i++) {
@@ -86,4 +101,14 @@ void ObjectValue::print(std::ostream& out) {
         out << ", ";
     }
     out << "}";
+}
+
+ObjectValue::~ObjectValue() {
+    for (int i=0;i<count;i++) {
+        delete[] fieldnames[i];
+        delete[] values[i];
+    }
+    delete fieldnames;
+    delete values;
+    count = 0;
 }

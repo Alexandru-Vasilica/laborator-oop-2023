@@ -22,6 +22,7 @@ class StringValue : public JsonValue {
   public:
     StringValue(const char* value);
     virtual void print(std::ostream& out) override;
+    ~StringValue();
 };
 
 class BoolValue : public JsonValue {
@@ -40,6 +41,7 @@ class NullValue : public JsonValue {
   public:
     NullValue();
     virtual void print(std::ostream& out) override;
+    ~NullValue();
 };
 
 class ArrayValue : public JsonValue {
@@ -51,6 +53,7 @@ class ArrayValue : public JsonValue {
     ArrayValue();
     void add(JsonValue* value);
     void print(std::ostream& out);
+    ~ArrayValue();
 };
 
 class ObjectValue : public JsonValue {
@@ -64,4 +67,5 @@ class ObjectValue : public JsonValue {
     void add(const char* name, JsonValue* value);
     operator unsigned();
     void print(std::ostream& out);
+    ~ObjectValue();
 };
