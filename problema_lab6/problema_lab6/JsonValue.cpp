@@ -16,7 +16,7 @@ StringValue::StringValue(const char* value) {
 }
 
 void StringValue::print(std::ostream& out) {
-    out << string;
+    out << "\"" << string << "\"";
 }
 
 BoolValue::BoolValue(bool x) {
@@ -24,7 +24,10 @@ BoolValue::BoolValue(bool x) {
 }
 
 void BoolValue::print(std::ostream& out) {
-    out << value;
+    if (value)
+        out << "true";
+    else
+        out << "false";
 }
 
 NullValue::NullValue() {
@@ -65,18 +68,22 @@ ArrayValue::ArrayValue() : count(0) {
 }
 
 void ArrayValue::print(std::ostream& out) {
+    out << "[";
     for (int i = 0; i < count; i++) {
         arr[i]->print(out);
-        out << " ";
+        if (i!=count-1)
+        out << ", ";
     }
-    out << "\n";
+    out << "]";
 }
 
 void ObjectValue::print(std::ostream& out) {
+    out << "{";
     for (int i=0; i<count;i++) {
-        out << fieldnames[i] << " ";
+        out << "\""<<fieldnames[i] << "\": ";
         values[i]->print(out);
-        out << " ";
+        if (i != count - 1)
+        out << ", ";
     }
-    out << "\n";
+    out << "}";
 }
