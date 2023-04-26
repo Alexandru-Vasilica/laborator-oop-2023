@@ -8,7 +8,7 @@
 #include<fstream>
 
 using namespace std;
-ifstream fin("Text.txt");
+
 struct Prio {
     bool operator()(const pair<string, int>& a, const pair<string, int>& b) const {
         if (a.second < b.second)
@@ -21,10 +21,9 @@ struct Prio {
 };
 
 int main() {
-   
-    char text[256];
-    fin.get(text, 256);
-    string s = text;
+    ifstream fin("Text.txt");
+    string s;
+    getline(fin, s);
     map<string, int> cuv;
     string sep = " ?!,.";
     priority_queue<pair<string, int>, deque<pair<string, int>>, Prio> sorted;
@@ -47,12 +46,10 @@ int main() {
         cuv[s]++;
     map<string, int>::iterator it;
     for (it = cuv.begin(); it != cuv.end(); it++) {
-        cout << "\"" << it->first << "\" : " << it->second << ",\n";
         pair<string, int> p = *it;
         sorted.push(p);
     }
-    cout << "\n";
-    while (sorted.empty() == 0) {
+    while (!sorted.empty()) {
         cout << sorted.top().first << "=>" << sorted.top().second << endl;
         sorted.pop();
     }
