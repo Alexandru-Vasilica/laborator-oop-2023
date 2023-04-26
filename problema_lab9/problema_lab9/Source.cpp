@@ -29,7 +29,10 @@ int main() {
     string sep = " ?!,.";
     priority_queue<pair<string, int>, deque<pair<string, int>>, Prio> sorted;
     int pos=s.find_first_not_of(sep);
-    s.erase(0, pos);
+    if (pos != string::npos)
+        s.erase(0, pos);
+    else
+        return 0;
     while ((pos = s.find_first_of(sep)) != string::npos) {
         string word = s.substr(0, pos);
         s.erase(0, pos + 1);
