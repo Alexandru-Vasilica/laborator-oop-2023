@@ -3,6 +3,7 @@
 #include"Coleg.h"
 #include"Cunoscut.h"
 #include"Agenda.h"
+#include"Types.h"
 using namespace std;
 
 int main() {
@@ -15,13 +16,16 @@ int main() {
     contacte.add_contact(c1);
     contacte.add_contact(p2);
     contacte.add_contact(c2);
-    cout<<contacte.find_name("B")->name<<endl;
+
+    contacte.find_name("B")->print();
     list<const Prieten*> prieteni = contacte.get_friends();
+    cout << endl;
     for (auto it : prieteni)
-        cout << it->name << " ";
+        it->print();
+    cout << endl;
     contacte.delete_contact("A");
     list<const Prieten*> prieteni2 = contacte.get_friends();
     for (auto it : prieteni2)
-        cout << it->name << " ";
+        it->print();
     return 0;
 }

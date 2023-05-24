@@ -1,10 +1,14 @@
 #pragma once
 #include<string>
+#include"Types.h"
 using namespace std;
 class Contact {
-  public:
+  protected:
     string name;
-    Contact() {  }
-    virtual string get_type() const=0;
 
+  public:
+    Contact() {  }
+    virtual int get_type() const;
+    virtual string get_name() const;
+    virtual void print() const = 0;
 };

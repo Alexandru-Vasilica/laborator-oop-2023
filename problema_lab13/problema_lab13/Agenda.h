@@ -2,6 +2,7 @@
 #include"Prieten.h"
 #include"Coleg.h"
 #include"Cunoscut.h"
+#include"Types.h"
 #include<vector>
 #include<list>
 using namespace std;

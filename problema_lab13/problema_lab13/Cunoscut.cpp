@@ -5,6 +5,14 @@ Cunoscut::Cunoscut(string name, string phone_number) {
     this->phone_number = phone_number;
 }
 
-string Cunoscut::get_type() const {
-    return "Cunoscut";
+int Cunoscut::get_type() const {
+    return CUNOSCUT;
+}
+
+string Cunoscut::get_phone_number() const {
+    return phone_number;
+}
+
+void Cunoscut::print() const {
+    cout << "Cunoscut: " << name << " " << phone_number << endl;
 }

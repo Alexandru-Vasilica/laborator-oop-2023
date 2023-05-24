@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include "Contact.h"
+#include<iostream>
+#include"Types.h"
 using namespace std;
 class Prieten : public Contact {
   private:
@@ -9,5 +11,9 @@ class Prieten : public Contact {
     string adress;
   public:
     Prieten(string name, string phone_number,string date_of_birth,string adress);
-    string get_type() const override;
+    int get_type() const override;
+    string get_phone_number() const;
+    string get_date_of_birth() const;
+    string get_adress() const;
+    void print() const override;
 };

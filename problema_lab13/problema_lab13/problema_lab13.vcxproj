@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Agenda.cpp" />
     <ClCompile Include="Coleg.cpp" />
+    <ClCompile Include="Contact.cpp" />
     <ClCompile Include="Cunoscut.cpp" />
     <ClCompile Include="Prieten.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Contact.h" />
     <ClInclude Include="Cunoscut.h" />
     <ClInclude Include="Prieten.h" />
+    <ClInclude Include="Types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

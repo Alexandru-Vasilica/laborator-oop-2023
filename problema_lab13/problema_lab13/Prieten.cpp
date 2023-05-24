@@ -7,6 +7,22 @@ Prieten::Prieten(string name, string phone_number, string date_of_birth, string 
     this->adress = adress;
 }
 
-string Prieten::get_type() const {
-    return "Prieten";
+int Prieten::get_type() const {
+    return PRIETEN;
+}
+
+string Prieten::get_phone_number() const {
+    return phone_number;
+}
+
+string Prieten::get_date_of_birth() const {
+    return date_of_birth;
+}
+
+string Prieten::get_adress() const {
+    return adress;
+}
+
+void Prieten::print() const {
+    cout << "Prieten: " << name << " " << phone_number << " " << date_of_birth << " " << adress << endl;
 }

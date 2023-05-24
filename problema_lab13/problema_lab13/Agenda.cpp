@@ -2,7 +2,7 @@
 
 Contact* Agenda::find_name(string name) {
     for (auto it : Contacte)
-        if (it->name == name)
+        if (it->get_name() == name)
             return it;
     return nullptr;
 }
@@ -10,14 +10,14 @@ Contact* Agenda::find_name(string name) {
  list<const Prieten*> Agenda::get_friends() {
     list<const Prieten*> friends;
     for (auto it : Contacte)
-        if (it->get_type() == "Prieten")
+        if (it->get_type() == PRIETEN)
             friends.push_back(reinterpret_cast<const Prieten*>(it));
     return friends;
 }
 
 void Agenda::delete_contact(string name) {
     for (int i = 0; i < Contacte.size(); i++)
-        if (Contacte[i]->name == name) {
+        if (Contacte[i]->get_name() == name) {
             Contacte.erase(Contacte.begin() + i);
             return;
         }
